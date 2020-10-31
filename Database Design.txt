@@ -1,0 +1,127 @@
+Database
+
+Tables
+1. User
+id
+name
+date_of_birth
+user_type
+...
+added_at
+
+2. Patient
+id
+user_id
+patient_name
+patient_mobile
+category
+sub_category
+document_ids (comma separated. e.g. 1,2,3,4)
+added_at
+
+3. Document
+id
+original_document_name (this is the name user uses)
+saved_document_location
+file_size (in KB)
+added_at
+user_id (optional)
+
+4. Allowed_Doctors
+id
+user_id
+is_allowed (1 or 0)
+added_at
+
+MYSQL does not have true or false
+
+
+
+
+// Variable naming //
+Industry standard is to use "_" in sql tables
+2 ways to name tables, columns
+
+1. camelcase
+addUser
+Industry standard is PHP, Dart
+
+2. with a underscore
+add_user
+Industry standard is MYSQL
+
+
+
+
+// OTP //
+When I call requestOtp
+Add 6 digit random number in user table > "otp" column
+
+When I call verifyOtp
+If the input otp matches user table > "otp" column, then I will set user table > "otp" column to "" (empty)
+If the input otp does not match, then we don't update the table
+
+
+Example: 666666
+
+First try: 123456
+Table is not updated
+
+Second try: 328582
+Table is not updated
+
+Third try: 666666
+"otp" column becomes "" (empty)
+
+
+
+
+// Options for documents and patients //
+Option 1:
+Have 1 table
+
+Patient
+id
+document_ids (comma separated. e.g. 1,2,3,4)
+
+e.g. 1
+e.g. 1,2
+e.g. 1,2,3,4,5
+
+
+You will write PHP code to encode and decode
+Step 1: You will convert documentIds array into comma separated value
+Step 2: You will save that in the database
+
+
+
+Option 2:
+Have 2 table
+
+Patient
+id
+...
+
+Patient_Document
+id
+patient_id
+document_id
+
+Step 1: You will do a for loop on the documentIds
+Step 2: You will save multiple rows in patient_document
+
+
+
+
+// Document has 2 name columns //
+10:30 am, User 1 calls upload "image.png"
+
+11:30 am a User 2 calls upload "image.png"
+
+User 1
+original_document_name: "image.png"
+saved_document_location: "/document/files/20201024103000-image.png"
+
+User 2
+original_document_name: "image.png"
+saved_document_location: "/document/files/20201024113000-image.png"

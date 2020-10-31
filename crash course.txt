@@ -1,0 +1,179 @@
+>> Server
+PHP Code
+Process, Calculate, Get, Update 
+In XAMPP, it's Apache
+
+
+
+>> Database
+Store (CRUD - Create, Read, Update, Delete)
+MySQL
+In XAMPP, it's MySQL
+
+
+Database
+Table(s)
+Column(s)
+
+
+Database - eyedocs
+Table(s) - user, document
+
+
+User table, then the columns
+id, Primary key, (auto increment)
+first name, VARCHAR(256)
+last name, VARCHAR (256)
+userType (PATIENT OR DOCTOR), VARCHAR (10)
+....
+addedAt, timestamp, (current_timestamp)
+
+e.g. 1 row
+id - 1
+first name - Vaibhav
+last name - Bahadur
+userType - PATIENT
+...
+addedAt - 24-10-2020 10:30:00
+
+
+INSERT INTO user (id, name) VALUES (1, 'Vaibhav');
+
+If the table is auto increment
+INSERT INTO user (name) VALUES ('Hosea');
+
+
+SQL Statements
+1. INSERT INTO table_name (column1, column2, column3) VALUES (value1, value2, value3);
+
+2. UPDATE `user` SET `id`=[value-1],`name`=[value-2],`userType`=[value-3],`addedAt`=[value-4] WHERE id=1
+
+3. DELETE
+We should never call DELETE
+
+4. SELECT
+
+
+
+
+
+API Design
+
+1. /user/login.php
+
+2. /user/register.php
+
+3. /document/upload.php
+
+4. /document/download.php
+
+
+
+
+
+GET vs POST
+When calling a URL in a browser you do a GET Request
+POST
+
+GET
+POST
+UPDATE
+
+We will use POST
+
+
+
+
+API Key
+
+We create a key (32 length long). This key is known by the server and it's know by the flutter app
+
+Sample: lVlEHYi2S8HUdSrFBJc051QYHcBplE0W
+
+
+
+
+API Response (output of the API)
+
+In Dart
+
+Widget getUserWidget() {
+}
+
+int getUserId() {
+}
+
+In the API, this is standard which a lot of companies
+
+They use JSON
+
+Valid JSON
+{
+	"id": 1,
+	"name": "Vaibhav"
+}
+
+Valid JSON
+[ 'Hello', 'World']
+[ 1, 2 ]
+
+Valid JSON
+[
+	{
+		"id": 1,
+		"name": "Vaibhav"
+	},
+	{
+		"id": 2,
+		"name": "Hosea"
+	}
+]
+
+Valid JSON
+{
+	"users": [
+		{
+			"id": 1,
+			"name": "Vaibhav"
+		},
+		{
+			"id": 2,
+			"name": "Hosea"
+		}
+	],
+	"hello": "world"
+}
+
+
+
+
+status is 200, then everything is working well
+
+
+Login.php
+status=200, Login successful
+status=201, Mobile number does not exist in database
+status=202, OTP does not match
+status=203, api key is invalid
+
+Sample Output
+{ "status": 200, "msg": "API Key is valid" }
+
+Sample Output
+{
+	"response": { "status": 200, "msg": "API Key is valid" },
+	"name": "Hosea"
+}
+
+
+
+
+
+
+
+
+
+
+
+/// PENDING ///
+1. Design session for database

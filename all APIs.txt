@@ -1,0 +1,110 @@
+APIs
+1. /user/requestOtp
+Input
+apiKey
+mobile
+
+Output
+{ "status": 200, "msg": "OTP sent" }
+
+
+2. /user/verifyOtp
+Input
+apiKey
+mobile
+otp
+
+Output
+{
+	"response": { "status": 200, "msg": "API Key is valid" },
+	"user": {
+		"first name": "",
+		"last name": ""
+	}
+}
+
+
+3. /user/register
+mobile
+userType (PATIENT or DOCTOR)
+first name
+last name
+date of birth
+...
+
+Output
+{ "status": 200, "msg": "API Key is valid" }
+
+
+4. /document/upload
+
+5. /document/download
+
+6. /patient/add
+documentIds: [] (array)
+name
+mobile
+category (will be constants)
+sub-category (will be constants)
+userId
+
+7. /patient/update
+recordId <<
+documentIds: [] (array)
+name
+mobile
+category (will be constants)
+sub-category (will be constants)
+userId
+
+8. /patient/delete
+recordId
+
+9. /patients/getHistory
+Input
+userId
+
+Output
+patients: [] (array)
+
+10. /user/getProfile
+Input
+userId
+
+11. /homePage
+Input
+userId
+
+Output
+patients: [] (latest 5 patients)
+spaceUsage: 200 (which means 200 MB)
+
+
+12.
+For Doctor
+Step 1: Sign Up
+(Login is not working)
+Step 2: Our app sends a SMS/Email to the user
+Step 3: Admin opens a website and “allows” a doctor to login
+Step 4: Doctor can now login to the app
+
+For Step 3 we have 2 new APIs
+
+/admin/dashboard
+Input
+apiKey
+
+Output
+allowed_doctors: [] (array)
+
+
+
+13. /admin/allowDoctor
+Input
+apiKey
+userId (this is the userId we want to allow)
+
+Output
+{ "status": 200, "msg": "Doctor has been allowed" }
+OR
+{ "status": 201, "msg": "Unable to allow doctor. Try again later" }
