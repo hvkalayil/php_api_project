@@ -4,7 +4,7 @@ $servername = "localhost";
 $dbname = "eyedocs";
 $username = "root";
 $password = "";
-$API_KEY = "lVlEHYi2S8HUdSrFBJc051QYHcBplE0W";
+$API_KEY = "GIVE_YOUR_API_KEY_HERE";
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
 
